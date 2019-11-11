@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .buttons {
+            margin: 5px;
+            width: 5%;
+        }
+    </style>
+</head>
+<body>
+    <p>Part A</p>
+    <div id="partA"></div>
+    <p>Part B</p>
+    <div id="partB"></div>
+    <script>
+        function generateButtons(num) {
+            const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            for (let i = 0; i < num; i++) {
+                let button = document.createElement("BUTTON");
+                button.className = "buttons";
+                button.innerHTML = LETTERS[i];
+                document.getElementById('partA').appendChild(button);
+                button.onclick = function () {
+                    console.log("Button " + button.innerHTML + " was clicked.");
+                }
+            }
+        }
+        function myRecipe(title, servings, recipe) {
+            this.title = title;
+            this.servings = servings;
+            this.recipe = recipe;
+            this.print = function() {
+                document.write("Recipe Name:<br>" + this.title + '<br><br>');
+                document.write("Serving Size:<br>" + this.servings + '<br><br>');
+                document.write("Recipes:<br>");
+                for (let i = 0; i < recipe.length; i++) {
+                    document.write(recipe[i] + '<br>');
+                }
+            }
+        }
+        function main() {
+            //generateButtons(3);
+            generateButtons(26);
+            let rec = new myRecipe("Chicken Soup", 4, ["Chicken broth", "celery", "carrots"]);
+            rec.print();
+        }
+        main();
+    </script>
+</body>
+</html>
